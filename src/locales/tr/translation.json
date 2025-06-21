@@ -1,0 +1,15 @@
+{
+  "welcome": "TrainVoc'a Hoş Geldin!",
+  "createRoom": "Oda Oluştur",
+  "joinRoom": "Odaya Katıl",
+  "roomDetails": "Oda Detayları",
+  "hostName": "Oda Sahibi İsmi",
+  "playerName": "Oyuncu İsmi",
+  "roomCode": "Oda Kodu",
+  "settings": "Ayarlar",
+  "submit": "Gönder",
+  "language": "Dil",
+  "footer": "© 2025 TrainVoc. Tüm hakları saklıdır.",
+  "description": "İngilizce-Türkçe kelime ezberini eğlenceli ve sosyal hale getir!",
+  "about": "Hakkında"
+}
