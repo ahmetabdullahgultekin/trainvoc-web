@@ -7,6 +7,8 @@ import CreateRoomPage from './pages/CreateRoomPage';
 import JoinRoomPage from './pages/JoinRoomPage';
 import RoomDetailPage from './pages/RoomDetailPage';
 import AboutPage from './pages/AboutPage';
+import LeaderboardPage from './pages/LeaderboardPage';
+import GamePage from './pages/GamePage';
 
 function App() {
     return (
@@ -18,6 +20,8 @@ function App() {
                 <Route path="/join" element={<JoinRoomPage/>}/>
                 <Route path="/room/:roomCode" element={<RoomDetailPage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
+                <Route path="/leaderboard" element={<LeaderboardPage/>}/>
+                <Route path="/game" element={<GamePage/>}/>
             </Routes>
             <Footer/>
         </>

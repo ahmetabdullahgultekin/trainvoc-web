@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Navbar.module.css';
-import {AppBar, Box, MenuItem, Select, Toolbar, Typography, type SelectChangeEvent} from '@mui/material';
+import {AppBar, Box, MenuItem, Select, type SelectChangeEvent, Toolbar, Typography} from '@mui/material';
 import {Link as RouterLink} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 
@@ -31,6 +31,9 @@ const Navbar: React.FC = () => {
                     </RouterLink>
                     <RouterLink to="/about" className={styles.link}>
                         <button className={styles.button}>{t('about')}</button>
+                    </RouterLink>
+                    <RouterLink to="/leaderboard" className={styles.link}>
+                        <button className={styles.button}>{t('leaderboard')}</button>
                     </RouterLink>
                     <Select
                         value={lang}

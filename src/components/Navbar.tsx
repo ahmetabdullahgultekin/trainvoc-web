@@ -1,21 +1,14 @@
 // Sayfa yönlendirmeleri ve genel layout için ana dosya
 import React from 'react';
 import {AppBar, Box, Button, MenuItem, Select, Toolbar, Typography} from '@mui/material';
-import {BrowserRouter as Router, Link as RouterLink, Route, Routes} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 import styles from './Navbar.module.css';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import CreateRoomPage from './pages/CreateRoomPage';
-import JoinRoomPage from './pages/JoinRoomPage';
-import RoomDetailPage from './pages/RoomDetailPage';
+import type {SelectChangeEvent} from '@mui/material/Select';
 
 const Navbar = () => {
     const [lang, setLang] = React.useState(localStorage.getItem('lang') || 'tr');
 
-    const handleLangChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const handleLangChange = (event: SelectChangeEvent<string>) => {
         const newLang = event.target.value as string;
         setLang(newLang);
         localStorage.setItem('lang', newLang);
@@ -49,23 +42,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-function App() {
-    return (
-        <Router>
-            <CssBaseline/>
-            <Navbar/>
-            <Container maxWidth="md" sx={{minHeight: '80vh', py: 4}}>
-                <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/create" element={<CreateRoomPage/>}/>
-                    <Route path="/join" element={<JoinRoomPage/>}/>
-                    <Route path="/room/:roomCode" element={<RoomDetailPage/>}/>
-                </Routes>
-            </Container>
-            <Footer/>
-        </Router>
-    );
-}
-
-export default App;
