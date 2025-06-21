@@ -72,7 +72,7 @@ const JoinRoomPage = () => {
                     </Typography>
                     <Divider sx={{mb: 4}}/>
                     <Grid container spacing={4} justifyContent="center">
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1000}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <GroupIcon color="primary" sx={{fontSize: 48}}/>
@@ -80,7 +80,7 @@ const JoinRoomPage = () => {
                                 <Typography color="text.secondary">Birlikte öğren, birlikte yarış!</Typography>
                             </Paper></Fade>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1200}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <EmojiEventsIcon color="warning" sx={{fontSize: 48}}/>
@@ -88,7 +88,7 @@ const JoinRoomPage = () => {
                                 <Typography color="text.secondary">En iyi oyuncularla yarış!</Typography>
                             </Paper></Fade>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1400}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <RocketLaunchIcon color="success" sx={{fontSize: 48}}/>

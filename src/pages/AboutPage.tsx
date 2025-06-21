@@ -57,30 +57,15 @@ const AboutPage: React.FC = () => {
                         </Typography>
                         <Divider sx={{mb: 4}}/>
                         <Box display="grid" gridTemplateColumns={{xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr'}} gap={3}>
-                            <Fade in timeout={1000}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <GroupIcon color="primary" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600}
-                                            mt={2}>{t('socialCompetition') || 'Sosyal Yarışma'}</Typography>
-                                <Typography
-                                    color="text.secondary">{t('socialCompetitionDesc') || 'Arkadaşlarınla yarış, eğlenerek öğren.'}</Typography>
-                            </Paper></Fade>
-                            <Fade in timeout={1200}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <EmojiEventsIcon color="warning" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600}
-                                            mt={2}>{t('multiRoom') || 'Çoklu Oda'}</Typography>
-                                <Typography
-                                    color="text.secondary">{t('multiRoomDesc') || 'Birden fazla odada farklı oyunlar.'}</Typography>
-                            </Paper></Fade>
-                            <Fade in timeout={1400}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <RocketLaunchIcon color="success" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600}
-                                            mt={2}>{t('advancedTech') || 'Gelişmiş Teknoloji'}</Typography>
-                                <Typography
-                                    color="text.secondary">{t('advancedTechDesc') || 'Modern ve hızlı altyapı.'}</Typography>
-                            </Paper></Fade>
+                            {features.map((feature, idx) => (
+                                <Fade in timeout={1000 + idx * 200} key={idx}>
+                                    <Paper elevation={2} sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
+                                        {feature.icon}
+                                        <Typography variant="h6" fontWeight={600} mt={2}>{feature.title}</Typography>
+                                        <Typography color="text.secondary">{feature.desc}</Typography>
+                                    </Paper>
+                                </Fade>
+                            ))}
                         </Box>
                     </Paper>
                 </Fade>

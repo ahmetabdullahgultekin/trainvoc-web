@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Divider, Fade, Grid, Paper, Typography} from '@mui/material';
+import {Box, Divider, Fade, Paper, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
 import axios from 'axios';
 import Loader from '../components/shared/Loader';
@@ -9,6 +9,7 @@ import type {GameRoom} from '../interfaces/game';
 import GroupIcon from '@mui/icons-material/Group';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import Grid from '@mui/material/Grid';
 
 const HomePage: React.FC = () => {
     const {t} = useTranslation();
@@ -45,7 +46,7 @@ const HomePage: React.FC = () => {
                     </Typography>
                     <Divider sx={{mb: 4}}/>
                     <Grid container spacing={4} justifyContent="center">
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1000}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <GroupIcon color="primary" sx={{fontSize: 48}}/>
@@ -53,7 +54,7 @@ const HomePage: React.FC = () => {
                                 <Typography color="text.secondary">Arkadaşlarınla veya toplulukla yarış!</Typography>
                             </Paper></Fade>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1200}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <EmojiEventsIcon color="warning" sx={{fontSize: 48}}/>
@@ -62,7 +63,7 @@ const HomePage: React.FC = () => {
                                     yükselt!</Typography>
                             </Paper></Fade>
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1400}><Paper elevation={2}
                                                            sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
                                 <RocketLaunchIcon color="success" sx={{fontSize: 48}}/>

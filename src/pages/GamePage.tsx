@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Alert, Box, Button, FormControlLabel, Paper, Radio, RadioGroup, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import axios from 'axios';
 import type {Question} from '../interfaces/gameExtra';
 
@@ -12,7 +12,6 @@ function useQuery() {
 const GamePage: React.FC = () => {
     const {t} = useTranslation();
     const query = useQuery();
-    const navigate = useNavigate();
     const roomCode = query.get('roomCode') || '';
     const playerName = query.get('playerName') || '';
 
@@ -69,7 +68,7 @@ const GamePage: React.FC = () => {
             {error && <Alert severity="error">{error}</Alert>}
             {question && (
                 <Paper sx={{p: 3, mt: 3}}>
-                    <Typography variant="h5" gutterBottom>{question.questionText}</Typography>
+                    <Typography variant="h5" gutterBottom>{question.text}</Typography>
                     <RadioGroup value={selected} onChange={e => setSelected(e.target.value)}>
                         {question.options.map((opt, idx) => (
                             <FormControlLabel
@@ -85,9 +84,10 @@ const GamePage: React.FC = () => {
                                 sx={{mt: 2}}>{t('submit')}</Button>
                     ) : (
                         <>
-                            <Alert severity={selected === question.correctAnswer ? 'success' : 'error'} sx={{mt: 2}}>
-                                {selected === question.correctAnswer ? t('correct') : t('wrong')}<br/>
-                                {t('correctAnswer')}: <b>{question.correctAnswer}</b>
+                            <Alert severity={selected === question.options[question.correctIndex] ? 'success' : 'error'}
+                                   sx={{mt: 2}}>
+                                {selected === question.options[question.correctIndex] ? t('correct') : t('wrong')}<br/>
+                                {t('correctAnswer')}: <b>{question.options[question.correctIndex]}</b>
                             </Alert>
                             <Button variant="outlined" onClick={handleNext} sx={{mt: 2}}>{t('next')}</Button>
                         </>

@@ -32,11 +32,11 @@ const RoomDetailPage = () => {
             {error && <Alert severity="error">{error}</Alert>}
             {room && (
                 <>
-                    <Typography>{t('roomCode')}: <b>{room.code || room.roomCode}</b></Typography>
+                    <Typography>{t('roomCode')}: <b>{room.roomCode}</b></Typography>
                     <Typography>{t('settings')}:</Typography>
                     <ul>
-                        <li>{t('questionCount') || 'Soru Sayısı'}: {room.settings?.questionCount}</li>
-                        <li>{t('timePerQuestion') || 'Soru Süresi'}: {room.settings?.timePerQuestion}</li>
+                        <li>{t('questionCount') || 'Soru Sayısı'}: {room.totalQuestionCount}</li>
+                        <li>{t('timePerQuestion') || 'Soru Süresi'}: {room.questionDuration}</li>
                     </ul>
                     <Typography mt={2}>{t('players') || 'Oyuncular'}:</Typography>
                     <List>
