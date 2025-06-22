@@ -1,75 +1,87 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Box, Divider, Fade, Paper, Typography} from '@mui/material';
 import {useTranslation} from 'react-i18next';
-import axios from 'axios';
-import Loader from '../components/shared/Loader';
-import {useNavigate} from 'react-router-dom';
-import RoomCard from '../components/shared/RoomCard';
-import type {GameRoom} from '../interfaces/game';
 import GroupIcon from '@mui/icons-material/Group';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import Grid from '@mui/material/Grid';
 
 const HomePage: React.FC = () => {
-    const {t} = useTranslation();
-    const [rooms, setRooms] = useState<GameRoom[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [joiningRoom, setJoiningRoom] = useState<string | null>(null);
-    const navigate = useNavigate();
+    useTranslation();
+    // const [, setLoading] = useState(true);
+    // const [, setJoiningRoom] = useState<string | null>(null);
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        setLoading(true);
-        axios.get('/api/game/rooms')
-            .then(res => setRooms(res.data))
-            .catch(() => setRooms([]))
-            .finally(() => setLoading(false));
-    }, []);
+    // useEffect(() => {
+    //     setLoading(true);
+    //     axios.get('/api/game/rooms')
+    //         .then(res => setRooms(res.data))
+    //         .catch(() => setRooms([]))
+    //         .finally(() => setLoading(false));
+    // }, []);
 
-    const handleJoin = (roomCode: string) => {
-        setJoiningRoom(roomCode);
-        setTimeout(() => {
-            navigate(`/join?roomCode=${encodeURIComponent(roomCode)}`);
-        }, 500);
-    };
+    // const handleJoin = (roomCode: string) => {
+    //     setJoiningRoom(roomCode);
+    //     setTimeout(() => {
+    //         navigate(`/join?roomCode=${encodeURIComponent(roomCode)}`);
+    //     }, 500);
+    // };
 
     return (
-        <Box maxWidth={1100} mx="auto" mt={4}>
+        <Box maxWidth={{xs: '100%', md: 1100}} mx="auto" mt={{xs: 2, md: 4}} px={{xs: 1, sm: 2, md: 0}}>
             <Fade in timeout={800}>
-                <Paper elevation={4} sx={{p: 4, borderRadius: 4, mb: 4}}>
-                    <Typography variant="h2" align="center" color="primary.main" fontWeight={700} gutterBottom>
+                <Paper elevation={4} sx={{p: {xs: 2, sm: 3, md: 4}, borderRadius: {xs: 2, sm: 4}, mb: 4}}>
+                    <Typography variant="h3" align="center" color="primary.main" fontWeight={700} gutterBottom
+                                sx={{fontSize: {xs: 28, sm: 36, md: 40}}}>
                         TrainVoc
                     </Typography>
-                    <Typography variant="h5" align="center" color="text.secondary" mb={4}>
+                    <Typography variant="h6" align="center" color="text.secondary" mb={4}
+                                sx={{fontSize: {xs: 16, sm: 20}}}>
                         İngilizce-Türkçe kelime ezberini eğlenceli, sosyal ve sürdürülebilir hale getiren yeni nesil
                         platform.
                     </Typography>
                     <Divider sx={{mb: 4}}/>
-                    <Grid container spacing={4} justifyContent="center">
+                    <Grid container spacing={2} justifyContent="center">
                         <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1000}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <GroupIcon color="primary" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600} mt={2}>Sosyal Oyun</Typography>
-                                <Typography color="text.secondary">Arkadaşlarınla veya toplulukla yarış!</Typography>
+                                                           sx={{
+                                                               p: {xs: 2, sm: 3},
+                                                               textAlign: 'center',
+                                                               borderRadius: 3
+                                                           }}>
+                                <GroupIcon color="primary" sx={{fontSize: {xs: 36, sm: 48}}}/>
+                                <Typography variant="h6" fontWeight={600} mt={2} sx={{fontSize: {xs: 15, sm: 18}}}>Sosyal
+                                    Oyun</Typography>
+                                <Typography color="text.secondary" sx={{fontSize: {xs: 13, sm: 15}}}>Arkadaşlarınla veya
+                                    toplulukla yarış!</Typography>
                             </Paper></Fade>
                         </Grid>
                         <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1200}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <EmojiEventsIcon color="warning" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600} mt={2}>Liderlik Tablosu</Typography>
-                                <Typography color="text.secondary">En iyi oyuncularla rekabet et, skorunu
-                                    yükselt!</Typography>
+                                                           sx={{
+                                                               p: {xs: 2, sm: 3},
+                                                               textAlign: 'center',
+                                                               borderRadius: 3
+                                                           }}>
+                                <EmojiEventsIcon color="warning" sx={{fontSize: {xs: 36, sm: 48}}}/>
+                                <Typography variant="h6" fontWeight={600} mt={2} sx={{fontSize: {xs: 15, sm: 18}}}>Liderlik
+                                    Tablosu</Typography>
+                                <Typography color="text.secondary" sx={{fontSize: {xs: 13, sm: 15}}}>En iyi oyuncularla
+                                    rekabet et, skorunu yükselt!</Typography>
                             </Paper></Fade>
                         </Grid>
                         <Grid sx={{display: {xs: 'none', sm: 'block'}}}>
                             <Fade in timeout={1400}><Paper elevation={2}
-                                                           sx={{p: 3, textAlign: 'center', borderRadius: 3}}>
-                                <RocketLaunchIcon color="success" sx={{fontSize: 48}}/>
-                                <Typography variant="h6" fontWeight={600} mt={2}>Hızlı ve Modern</Typography>
-                                <Typography color="text.secondary">Her cihazda hızlı, modern ve erişilebilir
-                                    deneyim.</Typography>
+                                                           sx={{
+                                                               p: {xs: 2, sm: 3},
+                                                               textAlign: 'center',
+                                                               borderRadius: 3
+                                                           }}>
+                                <RocketLaunchIcon color="success" sx={{fontSize: {xs: 36, sm: 48}}}/>
+                                <Typography variant="h6" fontWeight={600} mt={2} sx={{fontSize: {xs: 15, sm: 18}}}>Hızlı
+                                    ve Modern</Typography>
+                                <Typography color="text.secondary" sx={{fontSize: {xs: 13, sm: 15}}}>Her cihazda hızlı,
+                                    modern ve erişilebilir deneyim.</Typography>
                             </Paper></Fade>
                         </Grid>
                     </Grid>
@@ -77,27 +89,7 @@ const HomePage: React.FC = () => {
             </Fade>
             <Fade in timeout={1200}>
                 <Box>
-                    <Typography variant="h4" fontWeight={700} mb={3} color="primary.main">Aktif Odalar</Typography>
-                    {loading ? <Loader/> : (
-                        rooms.length === 0 ? (
-                            <Typography color="text.secondary">Şu anda aktif oda yok. Hemen bir oda
-                                oluştur!</Typography>
-                        ) : (
-                            <Box display="grid" gridTemplateColumns={{xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr'}}
-                                 gap={3}>
-                                {rooms.map((room, idx) => (
-                                    <RoomCard
-                                        key={room.roomCode || idx}
-                                        room={room}
-                                        idx={idx}
-                                        t={t}
-                                        joiningRoom={joiningRoom}
-                                        onJoin={handleJoin}
-                                    />
-                                ))}
-                            </Box>
-                        )
-                    )}
+                    {/* Aktif Odalar ve RoomCard kaldırıldı */}
                 </Box>
             </Fade>
         </Box>
