@@ -32,11 +32,11 @@ const JoinRoomPage = () => {
     const avatarId = avatar ? avatar : (Math.floor(Math.random() * 10) + 1).toString();
 
     useEffect(() => {
-        setRoomsLoading(true);
+        setLoading(true);
         api.get('/api/game/rooms')
             .then(res => setRooms(res.data))
             .catch(() => setRooms([]))
-            .finally(() => setRoomsLoading(false));
+            .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
