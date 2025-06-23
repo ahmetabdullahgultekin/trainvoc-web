@@ -32,6 +32,7 @@ const mockPlayers = [
     {id: '2', name: 'Veli', score: 0},
     {id: '3', name: 'Ayşe', score: 0},
 ];
+
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
@@ -44,14 +45,14 @@ const GamePage: React.FC = () => {
 
     const [step, setStep] = useState<'countdown' | 'question' | 'ranking' | 'final'>('countdown');
     const [current, setCurrent] = useState(0);
-     const [, setAnswers] = useState<string[]>([]);
-     const [, setQuestion] = useState<Question | null>(null);
-     const [, setSelected] = useState('');
-     const [, setAnswered] = useState(false);
-     const [, setLoading] = useState(false);
-     const [, setError] = useState('');
-     const [players, setPlayers] = useState<{id: string; name: string; score: number}[]>(mockPlayers);
-     const [showRanking, setShowRanking] = useState(false);
+    const [, setAnswers] = useState<string[]>([]);
+    const [, setQuestion] = useState<Question | null>(null);
+    const [, setSelected] = useState('');
+    const [, setAnswered] = useState(false);
+    const [, setLoading] = useState(false);
+    const [, setError] = useState('');
+    const [players, setPlayers] = useState<{ id: string; name: string; score: number }[]>(mockPlayers);
+    const [showRanking, setShowRanking] = useState(false);
 
     // Oyun başladığında ilk soruyu çek
     useEffect(() => {
@@ -87,8 +88,12 @@ const GamePage: React.FC = () => {
     const handleAnswer = async (answer: string) => {
         setAnswers(prev => [...prev, answer]);
         // Skor güncelle (örnek: sadece doğruysa +10)
-        setPlayers((prev: {id: string; name: string; score: number}[]) => prev.map((p: {id: string; name: string; score: number}, idx: number) =>
-            idx === 0 && answer === mockQuestions[current].correct ? {...p, score: p.score + 10} : p
+        setPlayers((prev: { id: string; name: string; score: number }[]) => prev.map((p: {
+                id: string;
+                name: string;
+                score: number
+            }, idx: number) =>
+                idx === 0 && answer === mockQuestions[current].correct ? {...p, score: p.score + 10} : p
         ));
         setStep('ranking');
         setShowRanking(true);
