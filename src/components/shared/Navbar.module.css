@@ -28,3 +28,26 @@
 .langSelect .MuiSvgIcon-root {
     color: white;
 }
+
+@media (max-width: 600px) {
+    .link {
+        margin-left: 0;
+        font-size: 1rem;
+        display: block;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .button {
+        width: 100%;
+        margin: 8px 0;
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+
+    .langSelect {
+        width: 100%;
+        margin: 8px 0;
+        font-size: 1.1rem;
+    }
+}

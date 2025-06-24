@@ -8,5 +8,19 @@ export default defineConfig({
             '/api': 'http://localhost:8080',
         },
     },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
+                    if (id.includes('src/pages/')) {
+                        return 'pages';
+                    }
+                },
+            },
+        },
+        chunkSizeWarningLimit: 800, // Uyarı sınırını artırdık
+    },
 });
-

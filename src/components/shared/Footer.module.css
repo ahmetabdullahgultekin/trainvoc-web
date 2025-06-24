@@ -9,3 +9,11 @@
     margin-top: 32px;
 }
 
+@media (max-width: 600px) {
+    .footer {
+        font-size: 1.1rem;
+        padding: 20px 5px;
+        margin-top: 16px;
+        word-break: break-word;
+    }
+}
