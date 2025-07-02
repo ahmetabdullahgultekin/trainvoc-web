@@ -1,13 +1,6 @@
 import React from 'react';
 import {Avatar, Box, Grid, Paper, Typography} from '@mui/material';
-
-interface Player {
-    id: string;
-    name: string;
-    score: number;
-    isTop3?: boolean;
-    isYou?: boolean;
-}
+import type {Player} from '../interfaces/game';
 
 interface GameFinalProps {
     players: Player[]; // Sıralı, en yüksekten en düşüğe
@@ -45,4 +38,3 @@ const GameFinal: React.FC<GameFinalProps> = ({players}) => {
 };
 
 export default GameFinal;
-

@@ -113,3 +113,34 @@ main {
         background-color: #f9f9f9;
     }
 }
+
+/* Soru cevaplandığında soru kutusu aşağı kayar */
+.question-animate {
+    animation: slideDown 0.5s;
+    margin-top: 40px;
+}
+
+/* Liderlik tablosu yukarıdan fade ile gelir */
+.ranking-animate {
+    animation: fadeInDown 0.5s;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(60px);
+    }
+}

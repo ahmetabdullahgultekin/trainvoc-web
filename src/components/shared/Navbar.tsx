@@ -18,7 +18,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import {Link as RouterLink} from 'react-router-dom';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import { keyframes } from '@emotion/react';
+import {keyframes} from '@emotion/react';
 
 const playPulse = keyframes`
   0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7); }
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
                                         boxShadow: 6,
                                     },
                                 }}
-                                endIcon={<SportsEsportsIcon sx={{ml: 1, fontSize: 28}} />}
+                                endIcon={<SportsEsportsIcon sx={{ml: 1, fontSize: 28}}/>}
                             >
                                 Oyna
                                 <Typography
@@ -112,7 +112,8 @@ const Navbar: React.FC = () => {
                                 </Typography>
                             </Button>
                         ) : (
-                            <Button key={item.to} color="inherit" component={RouterLink} to={item.to}>{item.label}</Button>
+                            <Button key={item.to} color="inherit" component={RouterLink}
+                                    to={item.to}>{item.label}</Button>
                         )
                     ))}
                     <Select
@@ -162,7 +163,7 @@ const Navbar: React.FC = () => {
                                                 boxShadow: 6,
                                             },
                                         }}
-                                        endIcon={<SportsEsportsIcon sx={{ml: 1, fontSize: 28}} />}
+                                        endIcon={<SportsEsportsIcon sx={{ml: 1, fontSize: 28}}/>}
                                     >
                                         Oyna
                                         <Typography

@@ -5,14 +5,8 @@ import GroupIcon from '@mui/icons-material/Group';
 import api from '../api';
 import Modal from '../components/shared/Modal';
 import FullscreenButton from '../components/shared/FullscreenButton';
-import {avatarList} from '../components/shared/useProfile';
+import useProfile, {avatarList} from '../components/shared/useProfile';
 import {hashPassword} from '../components/shared/hashPassword';
-
-interface Player {
-    id: string;
-    name: string;
-    isHost: boolean;
-}
 
 interface LobbyData {
     players: Player[];
@@ -30,12 +24,13 @@ const LobbyPage: React.FC = () => {
     const [error, setError] = useState('');
     const [showLeaveModal, setShowLeaveModal] = useState(false);
     const [roomPassword, setRoomPassword] = useState('');
-    const [hashedPassword, setHashedPassword] = useState('');
 
     // roomCode ve playerId queryden alınır
     const params = new URLSearchParams(location.search);
     const roomCode = params.get('roomCode');
     const playerId = params.get('playerId');
+    // player objesi tamamen kaldırıldı, sadece useProfile global olarak kullanılacak
+    const {nick, avatar} = useProfile();
 
     useEffect(() => {
         // Tam ekrandan çıkılırsa artık lobiyi dağıtma, sadece host çıkarsa dağıt
@@ -90,13 +85,16 @@ const LobbyPage: React.FC = () => {
         setLoading(true);
         setError("");
         try {
-            let hash = hashedPassword;
-            if (!hash && roomPassword) hash = await hashPassword(roomPassword);
-            await api.post(`/api/game/rooms/${roomCode}/start` + (hash ? `?hashedPassword=${hash}` : ''));
+            let url = `/api/game/rooms/${roomCode}/start`;
+            if (roomPassword) {
+                const hash = await hashPassword(roomPassword);
+                url += `?hashedPassword=${hash}`;
+            }
+            await api.post(url);
+            navigate(`/play/game?roomCode=${roomCode}&playerId=${playerId}`);
         } catch (e: any) {
             setError('Oyun başlatılamadı.');
             console.error('Oyun başlatma hatası:', e);
-            setLoading(false);
         } finally {
             setStarting(false);
             setLoading(false);
@@ -313,8 +311,6 @@ const LobbyPage: React.FC = () => {
                             value={roomPassword}
                             onChange={async e => {
                                 setRoomPassword(e.target.value);
-                                if (e.target.value) setHashedPassword(await hashPassword(e.target.value));
-                                else setHashedPassword('');
                             }}
                             fullWidth
                             margin="normal"

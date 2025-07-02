@@ -7,15 +7,19 @@ interface GameStartCountdownProps {
 
 const GameStartCountdown: React.FC<GameStartCountdownProps> = ({onComplete}) => {
     const [count, setCount] = useState(3);
+    const [done, setDone] = useState(false);
 
     useEffect(() => {
-        if (count === 0) {
+        if (count === 0 && !done) {
+            setDone(true);
             onComplete();
             return;
         }
-        const timer = setTimeout(() => setCount(c => c - 1), 1000);
-        return () => clearTimeout(timer);
-    }, [count, onComplete]);
+        if (count > 0) {
+            const timer = setTimeout(() => setCount(c => c - 1), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [count, onComplete, done]);
 
     return (
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minHeight="40vh">
@@ -28,4 +32,3 @@ const GameStartCountdown: React.FC<GameStartCountdownProps> = ({onComplete}) => 
 };
 
 export default GameStartCountdown;
-
